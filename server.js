@@ -41,7 +41,7 @@ function getBrowserRefresher(filepath) {
 }
 
 
-function main(IP, PORT, files=[]) {
+function main(PORT, files=[]) {
 
     app.get('/\*.svg', (req, res) => {
         const filepath = path.join(CWD, req.path)
@@ -79,10 +79,10 @@ function main(IP, PORT, files=[]) {
     })
 
     http.listen(PORT, () => {
-        console.info(`Listening on http://${IP}:${PORT}/`)
+        console.info(`Listening on http://localhost:${PORT}/`)
         let _url;
         for (let file of files) {
-            _url = `http://${IP}:${PORT}/${file}`
+            _url = `http://localhost:${PORT}/${file}`
             console.info('Opening', _url)
             opn(_url)
         }
