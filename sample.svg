@@ -4,4 +4,5 @@
     <rect x="10" y="10" width="2.5" height="2.5" fill="#bbb" />
     <rect x="10" y="17.5" width="2.5" height="2.5" fill="#bbb" />
     <rect x="17.5" y="17.5" width="2.5" height="2.5" fill="#bbb" />
+    <rect x="17.5" y="10" width="2.5" height="2.5" fill="#bbb" />
 </svg>

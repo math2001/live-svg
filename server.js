@@ -72,6 +72,7 @@ function main(IP, PORT, files=[]) {
             if (sockets[obj.path].length === 0) {
                 console.info('And close watcher (no socket left)')
                 watchers[obj.path].close()
+                delete watchers[obj.path]
             }
         })
     })
