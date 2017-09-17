@@ -1,0 +1,14 @@
+{
+  "name": "svg-viewer",
+  "version": "0.1.0",
+  "description": "Live svg reloader from any editor",
+  "main": "index.js",
+  "repository": "https://github.com/math2001/svg-viewer",
+  "author": "Mathieu PATUREL <australie.p@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^1.7.0",
+    "express": "^4.15.4",
+    "socket.io": "^2.0.3"
+  }
+}
