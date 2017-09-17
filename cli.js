@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 // a quick and dirty cli interface
 
 const runServer = require('./server.js')
