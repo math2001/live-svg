@@ -1,5 +1,5 @@
 <svg viewbox="0 0 30 30">
-    <rect x="10" y="10" width="10" height="10" fill="#ccc" />
+    <rect x="10" y="10" width="10" height="10" fill="red" />
     <rect x="12.5" y="12.5" width="5" height="5" fill="#999" />
     <rect x="10" y="10" width="2.5" height="2.5" fill="#bbb" />
     <rect x="10" y="17.5" width="2.5" height="2.5" fill="#bbb" />

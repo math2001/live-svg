@@ -27,7 +27,7 @@ function getBrowserRefresher(filepath) {
         if (eventName === 'add') {
             return
         }
-        console.info(`${eventName} @ '${filepath}'changed`)
+        console.info(`${eventName} @ '${filepath}'`)
         if (!sockets[filepath]) {
             throw new Error(`[internal error] No socket for ${filepath}`)
         }
@@ -63,6 +63,7 @@ function main(IP, PORT, files=[]) {
 
         sockets[obj.path].push(socket)
         if (!watchers[obj.path]) {
+            console.info('  - add new watcher')
             watchers[obj.path] = chokidar.watch(path.join(CWD, obj.path))
                 .on('all', getBrowserRefresher(obj.path))
         }
@@ -70,7 +71,7 @@ function main(IP, PORT, files=[]) {
             console.info(`Close socket for ${obj.path}`)
             sockets[obj.path] = sockets[obj.path].filter(sock => socket.id !== sock.id)
             if (sockets[obj.path].length === 0) {
-                console.info('And close watcher (no socket left)')
+                console.info('  - And close watcher (no socket left)')
                 watchers[obj.path].close()
                 delete watchers[obj.path]
             }
