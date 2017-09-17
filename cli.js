@@ -5,6 +5,8 @@ const runServer = require('./server.js')
 
 const defaults = { port: 6336 }
 
+const argv = process.argv.slice(1)
+
 function showHelp() {
     console.error('live-svg [options] files...')
     console.error()
@@ -24,27 +26,24 @@ function showHelp() {
     process.exit(1)
 }
 
-if (process.argv.indexOf('--help') !== -1) {
+if (argv.indexOf('--help') !== -1) {
     showHelp()
 }
 
-let portIndex = process.argv.indexOf('--port'), port, files
+let portIndex =argv.indexOf('--port'), port, files
 if (portIndex !== -1) {
-    port = process.argv[portIndex + 1]
+    port = rocess.argv[portIndex + 1]
     if (port === undefined) {
         console.error("Wrong use: need to specify a port to use after --port")
         showHelp()
     } else {
         port = parseInt(port)
     }
-    console.log(portIndex)
-    files = Array.from(process.argv)
+    files = Array.from(argv)
     files.splice(portIndex, 2)
 } else {
     port = defaults.port
-    files = process.argv
+    files = argv
 }
-
-
 
 runServer(port, files)
