@@ -91,5 +91,3 @@ function main(IP, PORT, files=[]) {
 }
 
 module.exports = main
-
-main('localhost', 5678, ['sample.svg'])
