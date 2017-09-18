@@ -5,7 +5,7 @@ const runServer = require('./server.js')
 
 const defaults = { port: 6336 }
 
-const argv = process.argv.slice(1)
+const argv = process.argv.slice(2)
 
 function showHelp() {
     console.error('live-svg [options] files...')
