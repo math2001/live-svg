@@ -17,6 +17,13 @@ Or
 $ yarn global add live-svg
 ```
 
+## Demo
+
+![demo of live-svg](demo.gif)
+
+The editor is VIM on wsltty. To increase/decrease numbers in VIM, just press
+<kbd>ctrl+a</kbd> and <kbd>ctrl+x</kbd>.
+
 ## Usage
 
 Start `live-svg` by just running it from your favorite terminal.

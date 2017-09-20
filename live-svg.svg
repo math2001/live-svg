@@ -1,5 +1,5 @@
 <svg viewbox="0 0 100 100">
     <text x="20" y="50" font-size="13" font-family="Menlo"
-    style="stroke-width:1px;stroke:CUrrentColor;">live-svg</text>
-    <line x1="20" y1="54" x2="53" y2="54" stroke="currentColor" stroke-width="1.5" />
+    style="stroke-width:1px;stroke:currentColor;">live-svg</text>
+    <line x1="19" y1="54" x2="53" y2="54" stroke="currentColor" stroke-width="1.5" />
 </svg>
