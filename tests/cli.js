@@ -1,5 +1,3 @@
-// test cli.js
-
 const parseArgs = require('../cli.js')
 
 function areEqual(a, b) {
@@ -45,5 +43,4 @@ for (let test of tests) {
         console.error('Got', actualResult, 'instead of', test[1])
     }
 }
-
 

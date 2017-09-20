@@ -8,7 +8,6 @@ const url = require('url')
 const chokidar = require('chokidar')
 const opn = require('opn')
 
-const CWD = process.cwd()
 const sockets = {}
 const watchers = []
 
@@ -31,7 +30,7 @@ function getBrowserRefresher(filepath) {
         if (!sockets[filepath]) {
             throw new Error(`[internal error] No socket for ${filepath}`)
         }
-        readFile(path.join(CWD, filepath), 'utf-8', (err, data) => {
+        readFile(path.join(PARAMS.cwd, filepath), 'utf-8', (err, data) => {
             for (let socket of sockets[filepath]) {
                 if (err) throw err
                 socket.emit('change', { svg: data })
@@ -40,11 +39,19 @@ function getBrowserRefresher(filepath) {
     }
 }
 
+function setDefault(args) {
+    args = Object.assign({}, args)
+    if (args.port === null) args.port = 6336
+    if (args.cwd === null) args.cwd = process.cwd()
+    return args
+}
 
-function main(PORT, files=[]) {
+function main(args) {
+
+    global.PARAMS = setDefault(args)
 
     app.get('/\*.svg', (req, res) => {
-        const filepath = path.join(CWD, req.path)
+        const filepath = path.join(PARAMS.cwd, req.path)
         access(filepath, fs_constants.F_OK, (err) => {
             if (err) {
                 return res.status(404)
@@ -64,7 +71,7 @@ function main(PORT, files=[]) {
         sockets[obj.path].push(socket)
         if (!watchers[obj.path]) {
             console.info('  - add new watcher')
-            watchers[obj.path] = chokidar.watch(path.join(CWD, obj.path))
+            watchers[obj.path] = chokidar.watch(path.join(PARAMS.cwd, obj.path))
                 .on('all', getBrowserRefresher(obj.path))
         }
         socket.on('disconnect', () => {
@@ -78,11 +85,11 @@ function main(PORT, files=[]) {
         })
     })
 
-    http.listen(PORT, () => {
-        console.info(`Listening on http://localhost:${PORT}/`)
+    http.listen(PARAMS.port, () => {
+        console.info(`Listening on http://localhost:${PARAMS.port}/`)
         let _url;
-        for (let file of files) {
-            _url = `http://localhost:${PORT}/${file}`
+        for (let file of PARAMS.files) {
+            _url = `http://localhost:${PARAMS.port}/${file}`
             console.info('Opening', _url)
             opn(_url)
         }

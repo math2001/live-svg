@@ -3,10 +3,6 @@
 
 const runServer = require('./server.js')
 
-const defaults = { port: 6336 }
-
-const argv = process.argv.slice(2)
-
 function showHelp() {
     console.error('live-svg [options] files...')
     console.error()
@@ -55,7 +51,7 @@ function consumeOption(args, name) {
 }
 
 if (!module.parent) {
-    runServer(parseArgs(argv))
+    runServer(parseArgs(process.argv.slice(2)))
 } else {
     module.exports = parseArgs
 }
