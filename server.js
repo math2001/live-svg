@@ -32,7 +32,9 @@ function getBrowserRefresher(filepath) {
         }
         readFile(path.join(PARAMS.cwd, filepath), 'utf-8', (err, data) => {
             for (let socket of sockets[filepath]) {
-                if (err) throw err
+                // here, we don't throw the error because it might fail since we migth read
+                // straight after or while the file is being written.
+                if (err) return console.error(`Couldn't read ${filepath}`)
                 socket.emit('change', { svg: data })
             }
         })
