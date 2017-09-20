@@ -44,13 +44,13 @@ live-svg [options] files...
 Start a server in the current working directory to serve svgs, live
 
 Usage:
---help: display help message and exit
---port <int>: port to use [default: 6336]
+  --help: display help message and exit
+  --port <int>: port to use [default: 6336]
 
 Examples:
-$ live-svg             -> Just starts the
-$ live-svg --port 8000 -> Starts the server on port 8000
-$ live-svg mysvg.svg   -> Starts the server in the CWD and open mysvg.svg
+  $ live-svg             -> Starts the server
+  $ live-svg --port 8000 -> Starts the server on port 8000
+  $ live-svg mysvg.svg   -> Starts the server and open mysvg.svg
                             in the browser
 
 See https://github.com/math2001/live-svg for more infos
