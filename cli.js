@@ -26,25 +26,36 @@ function showHelp() {
     process.exit(1)
 }
 
-if (argv.indexOf('--help') !== -1) {
-    showHelp()
+function parseArgs(argv) {
+    const args = Object.create(null)
+    args.help = consumeBoolean(argv, 'help')
+    args.port = consumeOption(argv, 'port')
+    args.cwd = consumeOption(argv, 'cwd')
+    args.files = Array.from(argv)
+    argv.splice(0, Infinity)
+
+    if (args.port !== null) args.port = parseInt(args.port)
+    return args
 }
 
-let portIndex = argv.indexOf('--port'), port, files
+function consumeBoolean(args, name) {
+    let index = args.indexOf('--' + name)
+    if (index === -1) return false
+    value = args[index + 1]
+    args.splice(index, 1)
+    return true
+}
 
-if (portIndex !== -1) {
-    port = argv[portIndex + 1]
-    if (port === undefined) {
-        console.error("Wrong use: need to specify a port to use after --port")
-        showHelp()
-    } else {
-        port = parseInt(port)
-    }
-    files = Array.from(argv)
-    files.splice(portIndex, 2)
+function consumeOption(args, name) {
+    let index = args.indexOf('--' + name)
+    if (index === -1) return null
+    value = args[index + 1]
+    args.splice(index, 2)
+    return value
+}
+
+if (!module.parent) {
+    runServer(parseArgs(argv))
 } else {
-    port = defaults.port
-    files = argv
+    module.exports = parseArgs
 }
-
-runServer(port, files)
