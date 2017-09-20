@@ -9,6 +9,7 @@ Start a server in the current working directory to serve svgs, live.
 
 Usage:
   --help: display help message and exit
+  --auto-exit: exit as soon as every preview are closed
   --port <int>: port to use [default: 6336]
   --cwd <string>: origin of the url (default .)
 
