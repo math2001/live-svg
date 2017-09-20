@@ -30,6 +30,7 @@ function parseArgs(argv) {
     const args = Object.create(null)
     args.help = consumeBoolean(argv, 'help')
     args.port = consumeOption(argv, 'port')
+    args.autoExit = consumeBoolean(argv, 'auto-exit')
     args.cwd = consumeOption(argv, 'cwd')
     args.files = Array.from(argv)
     argv.splice(0, Infinity)

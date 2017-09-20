@@ -82,6 +82,10 @@ function main(args) {
                 watchers[obj.path].close()
                 delete watchers[obj.path]
             }
+            if (PARAMS.autoExit && Object.keys(watchers).length === 0) {
+                console.info('  - And quit because of --auto-exit')
+                process.exit(0)
+            }
         })
     })
 
