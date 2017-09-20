@@ -2,7 +2,8 @@
 // a quick and dirty cli interface
 
 const runServer = require('./server.js')
-const HELP_MESSAGE = `live-svg [options] files...
+const HELP_MESSAGE = `
+live-svg [options] files...
 
 Start a server in the current working directory to serve svgs, live.
 
@@ -18,7 +19,7 @@ Examples:
                             in the browser
 
 See https://github.com/math2001/live-svg for more infos
-`
+`.trim()
 
 function showHelp() {
     console.error(HELP_MESSAGE)
@@ -53,8 +54,11 @@ function consumeOption(args, name) {
     return value
 }
 
+const args = parseArgs(process.argv.slice(2))
+if (args.help) showHelp()
+
 if (!module.parent) {
-    runServer(parseArgs(process.argv.slice(2)))
+    runServer(args)
 } else {
     module.exports = parseArgs
 }
