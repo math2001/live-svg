@@ -2,23 +2,26 @@
 // a quick and dirty cli interface
 
 const runServer = require('./server.js')
+const HELP_MESSAGE = `live-svg [options] files...
+
+Start a server in the current working directory to serve svgs, live.
+
+Usage:
+  --help: display help message and exit
+  --port <int>: port to use [default: 6336]
+  --cwd <string>: origin of the url (default .)
+
+Examples:
+  $ live-svg             -> Starts the server
+  $ live-svg --port 8000 -> Starts the server on port 8000
+  $ live-svg mysvg.svg   -> Starts the server and open http://localhost:6336/mysvg.svg
+                            in the browser
+
+See https://github.com/math2001/live-svg for more infos
+`
 
 function showHelp() {
-    console.error('live-svg [options] files...')
-    console.error()
-    console.error('Start a server in the current working directory to serve svgs, live')
-    console.error('')
-    console.error('Usage:')
-    console.error('  --help: display help message and exit')
-    console.error(`  --port <int>: port to use [default: ${defaults.port}]`)
-    console.error()
-    console.error('Examples:')
-    console.error('  $ live-svg             -> Starts the server')
-    console.error('  $ live-svg --port 8000 -> Starts the server on port 8000')
-    console.error('  $ live-svg mysvg.svg   -> Starts the server and open mysvg.svg')
-    console.error('                            in the browser')
-    console.error()
-    console.error('See https://github.com/math2001/live-svg for more infos')
+    console.error(HELP_MESSAGE)
     process.exit(1)
 }
 
