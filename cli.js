@@ -30,9 +30,10 @@ if (argv.indexOf('--help') !== -1) {
     showHelp()
 }
 
-let portIndex =argv.indexOf('--port'), port, files
+let portIndex = argv.indexOf('--port'), port, files
+
 if (portIndex !== -1) {
-    port = rocess.argv[portIndex + 1]
+    port = argv[portIndex + 1]
     if (port === undefined) {
         console.error("Wrong use: need to specify a port to use after --port")
         showHelp()
