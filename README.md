@@ -21,7 +21,7 @@ $ yarn global add live-svg
 
 Start `live-svg` by just running it from your favorite terminal.
 
-Open your browser at [localhost:6336](http://localhost:3663) followed by the
+Open your browser at <http://localhost:3663> followed by the
 relative path to the svg(s) you want to preview.
 
 ```
@@ -30,33 +30,39 @@ relative path to the svg(s) you want to preview.
         - mysvg.svg
 ```
 
-So, if you run `live-svg` in root, you'll need to open
-[localhost:6336/subdirectory/mysvg.svg](http://localhost:6336/subdirectory/mysvg.svg)
+So, if you run `live-svg` from root, you'll need to open
+<http://localhost:6336/subdirectory/mysvg.svg>
 
 It'll automatically watch the files that are open, and reload them as soon as you
 save.
 
-Have a look at the help message of the CLI:
-
-```
-live-svg [options] files...
-
-Start a server in the current working directory to serve svgs, live
-
-Usage:
-  --help: display help message and exit
-  --port <int>: port to use [default: 6336]
-
-Examples:
-  $ live-svg             -> Starts the server
-  $ live-svg --port 8000 -> Starts the server on port 8000
-  $ live-svg mysvg.svg   -> Starts the server and open mysvg.svg
-                            in the browser
-
-See https://github.com/math2001/live-svg for more infos
-```
-
 It makes learning to write SVG by hand or simply editing one much easier.
+
+There are different options:
+
+#### `--port <int>`
+
+The port to run the server on. By default it's `6336`, because 336 because it's
+the sum of the ASCII values of each letter in `svg`, and an extra 6 at the start
+because [palindromes number][] are cool :smile:
+
+#### `--cwd`
+
+By default, it's the where you currently are. But, using the previous example, if
+you ran: `live-svg --cwd subdirectory/`, you would've had to open
+<http://localhost:6336/mysvg.svg>
+
+#### `--auto-exit`
+
+Automatically exit as soon as every tab previewing svgs on the server created by
+live-svg in every browser.
+
+Basically, if you close the last svg in the browser, this program will exit.
+
+#### The rest?
+
+Every other arguments will be considered as file names, and will automatically be
+open in the browser by default.
 
 ### Absolute live
 
@@ -72,13 +78,15 @@ Just use the plugin [auto-save](https://packagecontrol.io/packages/auto-save).
 #### Vim
 
 ```vim
-:autocmd TextChanged,TextChangedI <buffer> write
+:autocmd TextChanged,TextChangedI <buffer> write<CR>
 ```
 
 I recommend you bind it to a shortcut, for example
 
 ```vim
-nnoremap <leader>l :autocmd TextChanged,TextChangedI <buffer> write
+nnoremap <leader>l :autocmd TextChanged,TextChangedI <buffer> write<CR>
 ```
 
 (feel free to contribute to add your favorite editor)
+
+[Palindromes number]: https://en.wikipedia.org/wiki/Palindromic_number
