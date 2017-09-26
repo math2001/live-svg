@@ -1,9 +1,9 @@
 {
   "name": "live-svg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Live svg reloader from any editor",
   "main": "server.js",
-  "repository": "https://github.com/math2001/svg-viewer",
+  "repository": "https://github.com/math2001/live-svg",
   "author": "Mathieu PATUREL <australie.p@gmail.com>",
   "license": "MIT",
   "bin": {
