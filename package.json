@@ -1,6 +1,6 @@
 {
   "name": "live-svg",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Live svg reloader from any editor",
   "main": "server.js",
   "repository": "https://github.com/math2001/svg-viewer",
